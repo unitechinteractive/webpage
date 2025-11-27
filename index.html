@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unitech Interactive - Coming Soon</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%, #0a0a0a 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .geometric-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .shape {
+            position: absolute;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+            animation-duration: 25s;
+        }
+
+        .shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            left: 80%;
+            animation-delay: 2s;
+            animation-duration: 30s;
+            transform: rotate(45deg);
+        }
+
+        .shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 80%;
+            left: 15%;
+            animation-delay: 4s;
+            animation-duration: 22s;
+            border-radius: 50%;
+        }
+
+        .shape:nth-child(4) {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 75%;
+            animation-delay: 1s;
+            animation-duration: 28s;
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+            border: none;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .shape:nth-child(5) {
+            width: 90px;
+            height: 90px;
+            top: 50%;
+            left: 5%;
+            animation-delay: 3s;
+            animation-duration: 26s;
+            transform: rotate(30deg);
+        }
+
+        .shape:nth-child(6) {
+            width: 70px;
+            height: 70px;
+            top: 15%;
+            left: 45%;
+            animation-delay: 5s;
+            animation-duration: 24s;
+            border-radius: 50%;
+        }
+
+        .shape:nth-child(7) {
+            width: 110px;
+            height: 110px;
+            top: 70%;
+            left: 60%;
+            animation-delay: 2.5s;
+            animation-duration: 27s;
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+            border: none;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0.1;
+            }
+            25% {
+                transform: translate(20px, -30px) rotate(90deg);
+                opacity: 0.2;
+            }
+            50% {
+                transform: translate(-15px, 40px) rotate(180deg);
+                opacity: 0.15;
+            }
+            75% {
+                transform: translate(30px, 20px) rotate(270deg);
+                opacity: 0.25;
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .main-text {
+            font-size: 3.5em;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-align: center;
+            margin-bottom: 40px;
+            min-height: 1.5em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background-color: white;
+            margin-left: 5px;
+            animation: blink 0.7s infinite;
+            vertical-align: text-bottom;
+        }
+
+        @keyframes blink {
+            0%, 50% {
+                opacity: 1;
+            }
+            51%, 100% {
+                opacity: 0;
+            }
+        }
+
+        .coming-soon {
+            position: absolute;
+            bottom: 80px;
+            font-size: 1.5em;
+            letter-spacing: 4px;
+            font-weight: 300;
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .main-text {
+                font-size: 2em;
+                padding: 0 20px;
+            }
+            
+            .coming-soon {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="geometric-bg">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    
+    <div class="main-text">
+        <span id="typed-text"></span><span class="cursor"></span>
+    </div>
+    <div class="coming-soon">COMING SOON</div>
+
+    <script>
+        const mainText = "Unitech Interactive";
+        const phrases = [
+            "Juiciness & feel",
+            "Easy to understand rules",
+            "Clear long-term goals",
+            "Technical stability",
+            "Engaging gameplay",
+            "Discover. Share. Join",
+            "Frictionless entry",
+            "Mutual benefit",
+            "Zero-loss safety"
+        ];
+        
+        const typingSpeed = 120;
+        const pauseAfterTyping = 2000;
+        const pauseBeforeRestart = 800;
+        
+        let textElement = document.getElementById('typed-text');
+        let loopCount = 0;
+        let usedPhrases = [];
+        
+        function getRandomPhrase() {
+            if (usedPhrases.length === phrases.length) {
+                usedPhrases = [];
+            }
+            
+            let availablePhrases = phrases.filter(p => !usedPhrases.includes(p));
+            let randomPhrase = availablePhrases[Math.floor(Math.random() * availablePhrases.length)];
+            usedPhrases.push(randomPhrase);
+            
+            return randomPhrase;
+        }
+        
+        function typeText() {
+            textElement.textContent = '';
+            
+            let textToType;
+            if (loopCount === 0 || loopCount % 3 === 0) {
+                textToType = mainText;
+            } else {
+                textToType = getRandomPhrase();
+            }
+            
+            let i = 0;
+            
+            const typeInterval = setInterval(() => {
+                if (i < textToType.length) {
+                    textElement.textContent += textToType.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typeInterval);
+                    
+                    setTimeout(() => {
+                        loopCount++;
+                        setTimeout(() => {
+                            typeText();
+                        }, pauseBeforeRestart);
+                    }, pauseAfterTyping);
+                }
+            }, typingSpeed);
+        }
+        
+        typeText();
+    </script>
+</body>
+</html>
